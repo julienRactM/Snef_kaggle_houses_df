@@ -6,6 +6,7 @@ WORKDIR /app
 # Copy model code and requirements file
 COPY shaky_model.py /app/model.py
 COPY requirements.txt /app/requirements.txt
+COPY data /app/data
 
 # Install dependencies
 RUN pip install -r requirements.txt
