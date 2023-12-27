@@ -1,10 +1,10 @@
-FROM python:3.9
+FROM python:3.8.12
 
 # Set working directory in the container
 WORKDIR /app
 
 # Copy model code and requirements file
-COPY model.py /app/model.py
+COPY shaky_model.py /app/model.py
 COPY requirements.txt /app/requirements.txt
 
 # Install dependencies
