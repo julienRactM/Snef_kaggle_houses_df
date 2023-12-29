@@ -36,7 +36,12 @@ df['cos_MoSold'] = np.cos(2*np.pi*df.MoSold/12)
 df.drop(columns=['MoSold'], inplace=True)
 
 CentralAir_encoder = OneHotEncoder(sparse=False, drop='if_binary', categories=[['N', 'Y']]) # Instanciate encoder
-df['CentralAir'] = CentralAir_encoder.fit_transform(df[['CentralAir']]) # Fit encoder and tranform# %%writefile my_python_file.py
+df['CentralAir'] = CentralAir_encoder.fit_transform(df[['CentralAir']]) # Fit encoder and tranform# Keeping a sample data out for api tests
+sample_row = df.iloc[-1,:]
+df = df.iloc[0:-1]
+
+
+# %%writefile my_python_file.py
 # All Columns to preprocess
 to_classify = ['HouseStyle']
 to_robust = ['LotArea', 'YearBuilt', 'GrLivArea']
@@ -49,12 +54,13 @@ select_features = to_classify + to_robust + to_min_max + already_processed
 
 X = df[select_features]
 y = df['SalePrice']  # Target
+sample_data = sample_row[select_features] #testing purpose
 
 r2list = []
 rmse_list = []
 
-for i in range(100):
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.1, \
+for i in range(1):
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.15, \
         random_state=np.random.randint(1, 20001) )
 
 
