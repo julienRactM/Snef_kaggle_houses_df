@@ -40,7 +40,8 @@ df['CentralAir'] = CentralAir_encoder.fit_transform(df[['CentralAir']]) # Fit en
 # All Columns to preprocess
 to_classify = ['HouseStyle']
 to_robust = ['LotArea', 'YearBuilt', 'GrLivArea']
-to_min_max = ['OverallQual', 'OverallCond', 'Fireplaces', 'GarageCars', 'FullBath']
+to_min_max = ['OverallQual', 'OverallCond', 'Fireplaces', 'GarageCars',\
+    'FullBath']
 already_processed = ['sin_MoSold', 'cos_MoSold', 'CentralAir']
 # Bench : 'MiscFeature'
 select_features = to_classify + to_robust + to_min_max + already_processed
@@ -52,7 +53,7 @@ y = df['SalePrice']  # Target
 r2list = []
 rmse_list = []
 
-for i in range(10):
+for i in range(100):
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.1, \
         random_state=np.random.randint(1, 20001) )
 
