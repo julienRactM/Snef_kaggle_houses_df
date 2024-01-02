@@ -31,6 +31,7 @@ def load_model_from_s3(bucket_name, key):
     model = joblib.load(io.BytesIO(model_content))
     return model
 
+
 def lambda_handler(event, context):
     if 'HouseStyle' in event:
         # User has provided input, use the provided data

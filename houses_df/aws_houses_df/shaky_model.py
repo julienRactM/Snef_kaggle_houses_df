@@ -59,6 +59,8 @@ sample_data = sample_row[select_features] #testing purpose
 r2list = []
 rmse_list = []
 
+# allow more accurate model's performance estimation with more training reps and
+# different data splits on a small amount of data, needs to be 1 for prediction tasks.
 for i in range(1):
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.15, \
         random_state=np.random.randint(1, 20001) )
